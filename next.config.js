@@ -8,7 +8,7 @@ module.exports = withPlugins([
     withOffline,
     {
       target: "serverless",
-      transformManifest: manifest => ["/"].concat(manifest), // add the homepage to the cache
+      transformManifest: (manifest) => ["/"].concat(manifest), // add the homepage to the cache
       workboxOpts: {
         swDest: "static/service-worker.js",
         runtimeCaching: [
@@ -20,15 +20,15 @@ module.exports = withPlugins([
               networkTimeoutSeconds: 15,
               expiration: {
                 maxEntries: 150,
-                maxAgeSeconds: 30 * 24 * 60 * 60 // 1 month
+                maxAgeSeconds: 30 * 24 * 60 * 60, // 1 month
               },
               cacheableResponse: {
-                statuses: [0, 200]
-              }
-            }
-          }
-        ]
-      }
-    }
-  ]
+                statuses: [0, 200],
+              },
+            },
+          },
+        ],
+      },
+    },
+  ],
 ]);
