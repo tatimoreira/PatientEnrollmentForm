@@ -1,11 +1,31 @@
-A ready-to-go starter for creating Single Page Applications with React, Next.js, Typescript and Tailwind.css
+# Patient Enrollment Form
 
-Readily configured to purge unneeded tailwind styles when building for production.
+This project is a React application, consists of a form and a data visualization screen.
 
-Fully supports the PWA standard and installs a service worker when conditions are met.
+## Technologies used
+| Name  |Reason   | 
+|---|---|
+| [NextJS / React ](https://nextjs.org/)  | I like NextJS routing but for this case I didn't need it, React is awesome!  |   
+|   [Tailwind ](https://tailwindcss.com/)|  I like how quickly and customizable you can style a web app with Tailwind |  
 
-Scores 100 in every lighthouse audit.
+## Installation
 
-Preconfigured to be deployed to Zeit Now (also with PWA support there!)
+Clone the project
 
-Have fun!
+```bash
+git clone git@github.com:tatimoreira/PatientEnrollmentForm.git
+```
+Go to the project folder
+```bash
+cd PatientEnrollmentForm
+```
+Install dependencies
+```bash
+yarn install
+```
+Run the project
+```bash
+yarn run dev
+```
+
+
