@@ -1,27 +1,66 @@
 export const DefaultUser = {
   firstName: '',
   lastName: '',
-  phoneNumber: '',
+  sex: '',
+  dateOfBirth: '',
   email: '',
-  nextOfKin: {
-    firstName: '',
-    lastName: '',
-    email: '',
-  },
+  phoneNumber: '',
+  streetAddress: '',
+  city: '',
+  state:'',
+  zip:'',
+  maritalStatus: '',
+  madicalQuestions: {
+    smoke: '',
+    howOftenSmoke: '',
+    alcohol: '',
+    howOftenAlcohol: '',
+    currentMedication: '',
+    medicationAllergies: '',
+    medicationAllergiesList: '',
+    surgeriesHospitalStays: '',
+    typeSurgeriesHospitalStays: ''
+  }
 }
 
-export const UserReducer = (user, { type, payload }) => {
+interface UserProps {
+  firstName: string;
+  lastName: string;
+  sex: string;
+  dateOfBirth: Date;
+  email: string;
+  phoneNumber: string;
+  streetAddress: string;
+  city:string;
+  state: string;
+  zip:number;
+  maritalStatus: 'married' | 'single' |  'divorced' | 'lifePartner'| 'separated' | 'widowed' | 'other',
+  madicalQuestions: {
+    smoke: boolean;
+    howOftenSmoke: string;
+    alcohol: boolean;
+    howOftenAlcohol: string;
+    currentMedication: string;
+    medicationAllergies: boolean;
+    medicationAllergiesList: string;
+    surgeriesHospitalStays: string;
+    typeSurgeriesHospitalStays: string;
+  }
+}
+
+export const UserReducer = (user: UserProps, { type, payload }) => {
+  debugger
   switch (type) {
     case 'UPDATE_PERSONAL_INFO':
       return {
         ...user,
         ...payload,
       }
-    case 'UPDATE_NEXTOFKIN_INFO':
+    case 'UPDATE_MEDICAL_INFO':
       return {
         ...user,
-        nextOfKin: {
-          ...user.nextOfKin,
+        madicalQuestions: {
+          ...user.madicalQuestions,
           ...payload,
         },
       }

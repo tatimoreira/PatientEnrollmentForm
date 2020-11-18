@@ -1,13 +1,14 @@
 import React from 'react'
-import UserDetails from './user-details'
-import NextOfKin from './next-of-kin'
-import Completed from './completed'
+import Demographics from './demographics';
+import Address from './address';
+import Conditions from './conditions';
+import MedicalInfo from './medicalInfo';
 
-const FormSteps = (step, setStep, user, setUser) => [
+const FormSteps = (step: number, setStep: (value: number | ((prevState: number) => number)) => void, user: {}, setUser:(( info:{}) => void)) => [
   {
-    title: 'Personal Details',
+    title: 'Personal Information',
     content: (
-      <UserDetails
+      <Demographics
         setStep={setStep}
         step={step}
         user={user}
@@ -16,14 +17,25 @@ const FormSteps = (step, setStep, user, setUser) => [
     ),
   },
   {
-    title: 'Next of Kin Details',
+    title: 'Address',
     content: (
-      <NextOfKin setStep={setStep} step={step} user={user} setUser={setUser} />
+      <Address
+        setStep={setStep}
+        step={step}
+        user={user}
+        setUser={setUser}
+      />
     ),
   },
   {
-    title: 'Complete',
-    content: <Completed user={user} />,
+    title: 'Conditions',
+    content: (
+      <Conditions setStep={setStep} step={step} user={user} setUser={setUser} />
+    ),
+  },
+  {
+    title: 'Medical questions',
+    content: <MedicalInfo setStep={setStep} step={step} user={user} setUser={setUser} />,
   },
 ]
 export default FormSteps

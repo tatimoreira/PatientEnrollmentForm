@@ -2,16 +2,15 @@ import React, { FC, useState } from 'react'
 import PropTypes from 'prop-types'
 import Input from './input';
 import Button from './button';
-import { isInfo } from './validation'
 
-interface UserDetailProps{
+interface DemographicsInfo{
   step: number;
   setStep:  (() => void);
   user: {};
   setUser:  (( info:{}) => void)
 }
 
-const UserDetails: FC<UserDetailProps>  = ({ step, setStep, user, setUser }) => {
+const MedicalInfo: FC<DemographicsInfo>  = ({ step, setStep, user, setUser }) => {
   const [errors, setErrors] = useState({})
 
   // handle onchange
@@ -23,7 +22,6 @@ const UserDetails: FC<UserDetailProps>  = ({ step, setStep, user, setUser }) => 
   }
   const handleContinue = (e) => {
     e.preventDefault()
-    const errors = isInfo(user)
     setErrors(errors)
     if (Object.keys(errors).length > 0) return
     setStep(step + 1)
@@ -33,38 +31,31 @@ const UserDetails: FC<UserDetailProps>  = ({ step, setStep, user, setUser }) => 
       <Input
         type="text"
         name="firstName"
-        value={user.firstName}
-        label="First name"
-        onChange={(e) => handleUser(e)}
-        error={errors.firstName}
+        label="Conditions"
       />
       <Input
         type="text"
         name="lastName"
-        value={user.lastName}
         label="Last name"
-        onChange={(e) => handleUser(e)}
-        error={errors.lastName}
       />
       <Input
         type="tel"
         label="Phone number"
         name="phoneNumber"
-        value={user.phoneNumber}
-        onChange={(e) => handleUser(e)}
-        error={errors.phoneNumber}
       />
       <Input
         type="email"
         label="Email address"
         name="email"
-        value={user.email}
-        onChange={(e) => handleUser(e)}
-        error={errors.email}
       />
-      <Button type="submit"> Continue</Button>
+      <div className="grid grid-cols-2 gap-2">
+        <Button onClick={() => setStep(step - 1)} type="button">
+          Back
+        </Button>
+        <Button type="submit"> Submit</Button>
+      </div>
     </form>
   )
 }
 
-export default UserDetails
+export default MedicalInfo;

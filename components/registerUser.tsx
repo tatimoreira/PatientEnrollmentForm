@@ -1,7 +1,6 @@
 import React, { useReducer, useState } from 'react'
-import { UserReducer, DefaultUser } from '../utils/userReducer'
-import styles from './register-user.module.scss'
-import FormSteps from './form-steps'
+import { UserReducer, DefaultUser } from '../utils/userReducer';
+import FormSteps from './formSteps';
 
 const RegisterUser = () => {
   let [step, setStep] = useState(0)
@@ -9,12 +8,12 @@ const RegisterUser = () => {
   let steps = FormSteps(step, setStep, user, setUser)
 
   return (
-    <div className={styles.Register}>
-      <h1>Register User: {steps[`${step}`].title} </h1>
-      <h4>
+    <div className="p-16 text-base ">
+      <h1 className="text-3xl text-center">Register User: {steps[`${step}`].title} </h1>
+      <h4 className="text-xl text-center">
         Step {step + 1}/{steps.length}
       </h4>
-      <div className={styles.RegisterBody}>{steps[`${step}`].content}</div>
+      <div >{steps[`${step}`].content}</div>
     </div>
   )
 }
