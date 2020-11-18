@@ -50,7 +50,7 @@ const Demographics: FC<StepProps>  = ({ step, setStep, user, setUser }) => {
   const [errors, setErrors] = useState({})
 
   // handle onchange
-  const handleUser = ({ target }) => {
+  const handleUser  = ({ target }) => {
     debugger
     setUser({
       type: 'UPDATE_PERSONAL_INFO',

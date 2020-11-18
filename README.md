@@ -27,5 +27,14 @@ Run the project
 ```bash
 yarn run dev
 ```
+## Design and structure
+
+- The project contains reusable components as Button, Input and Select.
+- In the folder ```RegisterFlow ``` you can find all code for the registration process.
+  
+   The Register flow consist on a file called ```registerUser``` which receives the content of every step and an array with all the step is in ```formSteps```
+- A layout provides the consistent style of the app.
+
+
 
 

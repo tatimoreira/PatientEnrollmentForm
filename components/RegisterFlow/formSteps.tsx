@@ -5,6 +5,7 @@ import Conditions from './conditions';
 import MedicalInfo from './medicalInfo';
 import Terms from './terms';
 import Summary from './summary';
+import Completed from './completed';
 import { UserProps } from './userReducer';
 
 const FormSteps = (step: number, setStep: (value: number | ((prevState: number) => number)) => void, user: UserProps, setUser:(( info:{}) => void)) => [
@@ -47,6 +48,10 @@ const FormSteps = (step: number, setStep: (value: number | ((prevState: number) 
   {
     title: 'Terms',
     content: <Terms setStep={setStep} step={step} user={user} setUser={setUser} />,
+  },
+  {
+    title: 'Completed',
+    content: <Completed  user={user} />,
   },
 ]
 export default FormSteps

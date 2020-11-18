@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Input from '../input';
 import Button from '../button';
 import { StepProps } from './userReducer';
+import { checkServerIdentity } from 'tls';
 
 
 const Address: FC<StepProps>  = ({ step, setStep, user, setUser }) => {
@@ -27,21 +28,29 @@ const Address: FC<StepProps>  = ({ step, setStep, user, setUser }) => {
         <Input
           type="text"
           label="Street Address"
+          value={user.streetAddress}
+          onChange={(e) => handleUser(e)}
           name="streetAddress"
         />
         <Input
           type="text"
           label="City"
+          value={user.city}
+          onChange={(e) => handleUser(e)}
           name="city"
         />
         <Input
           type="text"
           label="State"
+          value={user.state}
+          onChange={(e) => handleUser(e)}
           name="state"
         />
         <Input
           type="text"
           label="Zip"
+          value={user.zip}
+          onChange={(e) => handleUser(e)}
           name="zip"
         />
      
