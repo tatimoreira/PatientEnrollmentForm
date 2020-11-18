@@ -1,16 +1,52 @@
 import React, { FC, useState } from 'react'
-import PropTypes from 'prop-types'
-import Input from './input';
-import Button from './button';
+import Input from '../input';
+import Button from '../button';
+import Select from '../select';
+import { UserProps, StepProps } from './userReducer';
 
-interface DemographicsInfo{
-  step: number;
-  setStep:  (() => void);
-  user: {};
-  setUser:  (( info:{}) => void)
-}
+const sexOptions = [
+  {
+    value : "female",
+    name: "Female"
+  },
+  {
+    value : "male",
+    name: "Male"
+  }
+]
 
-const Demographics: FC<DemographicsInfo>  = ({ step, setStep, user, setUser }) => {
+const maritalSatusOptions = [
+  {
+    value : "single",
+    name: "Single"
+  },
+  {
+    value : "married",
+    name: "Married"
+  },
+  {
+    value : "divorced",
+    name: "Divorced"
+  },
+  {
+    value : "lifePartner",
+    name: "Life Partner"
+  },
+  {
+    value : "separated",
+    name: "Separated"
+  },
+  {
+    value : "widowed",
+    name: "Widowed"
+  },
+  {
+    value : "other",
+    name: "Other"
+  }
+]
+
+const Demographics: FC<StepProps>  = ({ step, setStep, user, setUser }) => {
   const [errors, setErrors] = useState({})
 
   // handle onchange
@@ -21,12 +57,14 @@ const Demographics: FC<DemographicsInfo>  = ({ step, setStep, user, setUser }) =
       payload: { [target.name]: target.value },
     })
   }
+
   const handleContinue = (e) => {
     e.preventDefault()
     setErrors(errors)
     if (Object.keys(errors).length > 0) return
     setStep(step + 1)
   }
+  
   return (
     <form onSubmit={handleContinue}  className="w-full">
       <div >
@@ -44,11 +82,11 @@ const Demographics: FC<DemographicsInfo>  = ({ step, setStep, user, setUser }) =
           value={user.lastName}
           onChange={(e) => handleUser(e)}
         />
-        <Input
-          type="text"
-          label="Sex"
+        <Select
           name="sex"
+          label="Sex"
           value={user.sex}
+          options={sexOptions}
           onChange={(e) => handleUser(e)}
         />
         <Input
@@ -72,11 +110,11 @@ const Demographics: FC<DemographicsInfo>  = ({ step, setStep, user, setUser }) =
           value={user.phoneNumber}
           onChange={(e) => handleUser(e)}
         />
-        <Input
-          type="text"
-          label="Marital Status"
+        <Select
           name="maritalStatus"
+          label="Marital Status"
           value={user.maritalStatus}
+          options={maritalSatusOptions}
           onChange={(e) => handleUser(e)}
         />
       </div>

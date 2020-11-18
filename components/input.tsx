@@ -1,19 +1,18 @@
 import React, {FC, InputHTMLAttributes} from 'react'
-import styles from './input.module.scss'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
   name: string;
   label: string;
   error?: string;
   type?: string;
-  value?: string;
+  value?: string | Date | number;
 }
 
 const Input : FC<InputProps> = ({ label, error, ...rest }) => {
   return (
-    <div className="grid justify-center mb-2">
+    <div className="grid mb-2">
       <label>{label}</label>
-      <input {...rest} className="grid justify-center p-1 mt-1 border-2 border-gray-600 border-solid rounded" />
+      <input {...rest} className="p-2 mt-1 border border-gray-400 border-solid rounded " />
       {error && (
         <div>
           <span> {error}</span>

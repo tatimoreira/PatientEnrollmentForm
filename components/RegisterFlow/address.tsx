@@ -1,16 +1,11 @@
 import React, { FC, useState } from 'react'
 import PropTypes from 'prop-types'
-import Input from './input';
-import Button from './button';
+import Input from '../input';
+import Button from '../button';
+import { StepProps } from './userReducer';
 
-interface DemographicsInfo{
-  step: number;
-  setStep:  (() => void);
-  user: {};
-  setUser:  (( info:{}) => void)
-}
 
-const Address: FC<DemographicsInfo>  = ({ step, setStep, user, setUser }) => {
+const Address: FC<StepProps>  = ({ step, setStep, user, setUser }) => {
   const [errors, setErrors] = useState({})
 
   // handle onchange
@@ -49,11 +44,7 @@ const Address: FC<DemographicsInfo>  = ({ step, setStep, user, setUser }) => {
           label="Zip"
           name="zip"
         />
-        <Input
-          type="text"
-          label="Marital Status"
-          name="maritalStatus"
-        />
+     
       </div>
       <div className="grid grid-cols-2 gap-2">
         <Button onClick={() => setStep(step - 1)} type="button">

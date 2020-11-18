@@ -1,6 +1,6 @@
 import "../styles/index.css";
 import { Layout } from "../components/layout";
-import  RegisterUser  from "../components/registerUser";
+import  RegisterUser  from "../components/RegisterFlow/registerUser";
 
 
 import { NextPage } from "next";

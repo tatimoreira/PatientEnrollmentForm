@@ -1,5 +1,5 @@
 import React, { useReducer, useState } from 'react'
-import { UserReducer, DefaultUser } from '../utils/userReducer';
+import { UserReducer, DefaultUser } from './userReducer';
 import FormSteps from './formSteps';
 
 const RegisterUser = () => {

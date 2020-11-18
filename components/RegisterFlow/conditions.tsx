@@ -1,16 +1,9 @@
 import React, { FC, useState } from 'react'
-import PropTypes from 'prop-types'
-import Input from './input';
-import Button from './button';
+import Input from '../input';
+import Button from '../button';
+import { StepProps } from './userReducer';
 
-interface DemographicsInfo{
-  step: number;
-  setStep:  (() => void);
-  user: {};
-  setUser:  (( info:{}) => void)
-}
-
-const MedicalInfo: FC<DemographicsInfo>  = ({ step, setStep, user, setUser }) => {
+const Conditions: FC<StepProps>  = ({ step, setStep, user, setUser }) => {
   const [errors, setErrors] = useState({})
 
   // handle onchange
@@ -52,10 +45,10 @@ const MedicalInfo: FC<DemographicsInfo>  = ({ step, setStep, user, setUser }) =>
         <Button onClick={() => setStep(step - 1)} type="button">
           Back
         </Button>
-        <Button type="submit"> Submit</Button>
+        <Button type="submit"> Continue</Button>
       </div>
     </form>
   )
 }
 
-export default MedicalInfo;
+export default Conditions;

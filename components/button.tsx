@@ -7,7 +7,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
 }
 
 const Button:FC<ButtonProps> = ({ type, children,  onClick }) => (
-  <button type={type} onClick={onClick} className="relative w-full text-white bg-red-500 rounded" >
+  <button type={type} onClick={onClick} className="relative w-full p-4 mt-8 text-white bg-red-500 rounded" >
     {children}
   </button>
 )

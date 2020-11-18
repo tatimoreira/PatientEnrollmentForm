@@ -2,7 +2,7 @@ export const DefaultUser = {
   firstName: '',
   lastName: '',
   sex: '',
-  dateOfBirth: '',
+  dateOfBirth: Date,
   email: '',
   phoneNumber: '',
   streetAddress: '',
@@ -10,11 +10,13 @@ export const DefaultUser = {
   state:'',
   zip:'',
   maritalStatus: '',
-  madicalQuestions: {
-    smoke: '',
+  medicalQuestions: {
+    smoke: false,
     howOftenSmoke: '',
-    alcohol: '',
+    alcohol: false,
     howOftenAlcohol: '',
+    illicitDrugs: false,
+    howOftenIllicitDrugs: '',
     currentMedication: '',
     medicationAllergies: '',
     medicationAllergiesList: '',
@@ -23,7 +25,14 @@ export const DefaultUser = {
   }
 }
 
-interface UserProps {
+export interface StepProps{
+  step: number;
+  setStep:  (value: number | ((prevState: number) => number)) => void;
+  user: UserProps;
+  setUser:  (( info:{}) => void)
+}
+
+export interface UserProps {
   firstName: string;
   lastName: string;
   sex: string;
@@ -35,11 +44,13 @@ interface UserProps {
   state: string;
   zip:number;
   maritalStatus: 'married' | 'single' |  'divorced' | 'lifePartner'| 'separated' | 'widowed' | 'other',
-  madicalQuestions: {
+  medicalQuestions: {
     smoke: boolean;
     howOftenSmoke: string;
     alcohol: boolean;
     howOftenAlcohol: string;
+    illicitDrugs: boolean;
+    howOftenIllicitDrugs: string;
     currentMedication: string;
     medicationAllergies: boolean;
     medicationAllergiesList: string;
@@ -59,8 +70,8 @@ export const UserReducer = (user: UserProps, { type, payload }) => {
     case 'UPDATE_MEDICAL_INFO':
       return {
         ...user,
-        madicalQuestions: {
-          ...user.madicalQuestions,
+        medicalQuestions: {
+          ...user.medicalQuestions,
           ...payload,
         },
       }
